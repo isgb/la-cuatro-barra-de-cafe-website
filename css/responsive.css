@@ -74,6 +74,15 @@
     padding: 0.45rem 0.9rem;
   }
 
+  .pie-redes {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .pie-redes-lista {
+    justify-content: center;
+  }
+
   .pie-inferior {
     flex-direction: column;
     text-align: center;

@@ -138,6 +138,7 @@
 
 /* Menú desplegado en móvil: siempre con fondo legible */
 @media (max-width: 991.98px) {
+
   .barra-navegacion:has(.navbar-collapse.show),
   .barra-navegacion:has(.navbar-collapse.collapsing) {
     background: rgba(245, 239, 228, 0.97);

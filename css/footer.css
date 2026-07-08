@@ -66,3 +66,43 @@
 .pie-inferior p {
   margin: 0;
 }
+
+/* Sección de redes sociales en el footer */
+.pie-redes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: var(--espacio-3) 0;
+}
+
+.pie-redes-titulo {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--color-oliva-claro);
+}
+
+.pie-redes-lista {
+  display: flex;
+  gap: 1rem;
+}
+
+.pie-redes-lista a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-recto);
+  border: 1px solid rgba(241, 234, 217, 0.2);
+  color: var(--texto-suave-oscuro);
+  transition: background var(--transicion-rapida), border-color var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+.pie-redes-lista a:hover {
+  background: var(--color-oliva);
+  border-color: var(--color-oliva);
+  color: var(--color-crema);
+}
