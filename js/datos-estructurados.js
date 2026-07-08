@@ -5,6 +5,8 @@
 (function () {
   'use strict';
 
+  // Datos estructurados para buscadores (JSON-LD)
+  // Fuente: https://schema.org/CafeOrCoffeeShop
   const datosNegocio = {
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
