@@ -35,7 +35,8 @@ sitio_web/
 │   ├── navbar.js       Scroll, enlace activo, menú móvil
 │   ├── animations.js   Revelado con IntersectionObserver
 │   ├── gallery.js      Lightbox accesible (teclado + foco atrapado)
-│   └── forms.js        Validación del formulario
+│   ├── forms.js        Validación del formulario
+│   └── datos-estructurados.js  JSON-LD (SEO) inyectado al &lt;head&gt;
 ├── img/                Fotografías optimizadas (WebP + JPEG)
 ├── fonts/              Fuentes woff2 (latin subset)
 ├── icons/              Favicon SVG
