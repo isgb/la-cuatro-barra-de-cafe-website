@@ -25,7 +25,7 @@ sitio_web/
 │   ├── hero.css        Portada y botones globales
 │   ├── about.css       Historia y filosofía
 │   ├── menu.css        Temporada, carta, origen/expendio y métodos
-│   ├── gallery.css     Riel de galería y visor (lightbox)
+│   ├── gallery.css     Carrusel de galería (Swiper) y visor (lightbox)
 │   ├── testimonials.css Eventos, comunidad y preguntas frecuentes
 │   ├── contact.css     Ubicación/horarios y formulario de contacto
 │   ├── footer.css      Pie de página
@@ -34,9 +34,10 @@ sitio_web/
 │   ├── app.js          Inicialización general
 │   ├── navbar.js       Scroll, enlace activo, menú móvil
 │   ├── animations.js   Revelado con IntersectionObserver
+│   ├── carrusel.js     Carrusel de galería (Swiper)
 │   ├── gallery.js      Lightbox accesible (teclado + foco atrapado)
 │   ├── forms.js        Validación del formulario
-│   └── datos-estructurados.js  JSON-LD (SEO) inyectado al &lt;head&gt;
+│   └── datos-estructurados.js  JSON-LD (SEO) inyectado al <head>
 ├── img/                Fotografías optimizadas (WebP + JPEG)
 ├── fonts/              Fuentes woff2 (latin subset)
 ├── icons/              Favicon SVG
