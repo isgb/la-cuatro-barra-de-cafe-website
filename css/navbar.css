@@ -1,0 +1,178 @@
+/* ============================================
+   Barra de navegación fija
+   ============================================ */
+
+.barra-navegacion {
+  padding-block: 1.1rem;
+  background: transparent;
+  transition: background var(--transicion-rapida), box-shadow var(--transicion-rapida), padding var(--transicion-rapida);
+}
+
+/* Estado al hacer scroll (lo activa navbar.js) */
+.barra-navegacion.compacta {
+  padding-block: 0.55rem;
+  background: rgba(245, 239, 228, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(30, 27, 23, 0.1);
+}
+
+/* Sobre el hero (fondo oscuro) los enlaces van en crema */
+.barra-navegacion:not(.compacta) .nav-link,
+.barra-navegacion:not(.compacta) .marca-nombre {
+  color: var(--texto-sobre-oscuro);
+}
+
+.barra-navegacion:not(.compacta) .marca-descriptor {
+  color: var(--color-oliva-claro);
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0.2rem;
+}
+
+.marca-nombre {
+  font-family: var(--fuente-condensada);
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--texto-principal);
+}
+
+.marca-descriptor {
+  font-family: var(--fuente-condensada);
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--color-oliva-oscuro);
+}
+
+.lista-navegacion .nav-link {
+  font-family: var(--fuente-condensada);
+  font-size: 0.98rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--texto-principal);
+  padding-inline: 0.9rem;
+  position: relative;
+}
+
+/* Subrayado que crece al pasar el cursor */
+.lista-navegacion .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0.9rem;
+  right: 100%;
+  bottom: 0.35rem;
+  height: 2px;
+  background: var(--color-ambar);
+  transition: right var(--transicion-media);
+}
+
+.lista-navegacion .nav-link:hover::after,
+.lista-navegacion .nav-link.activo::after {
+  right: 0.9rem;
+}
+
+.lista-navegacion .nav-link:hover,
+.lista-navegacion .nav-link.activo {
+  color: var(--color-ambar);
+}
+
+.boton-nav {
+  display: inline-block;
+  font-family: var(--fuente-condensada);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.4rem;
+  border: 1.5px solid var(--color-ambar);
+  border-radius: var(--radio-recto);
+  color: var(--color-ambar);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+.boton-nav:hover {
+  background: var(--color-ambar);
+  color: var(--color-crema);
+}
+
+/* ---- Botón hamburguesa propio ----
+   El relleno amplía el área táctil a ~44px sin
+   engordar el dibujo de las dos líneas */
+.boton-menu {
+  border: 0;
+  padding: 1.05rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: transparent;
+}
+
+.boton-menu:focus {
+  box-shadow: none;
+}
+
+.linea-menu {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+  color: var(--texto-principal);
+  transition: transform var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.barra-navegacion:not(.compacta) .linea-menu {
+  color: var(--texto-sobre-oscuro);
+}
+
+.boton-menu[aria-expanded="true"] .linea-menu:first-child {
+  transform: translateY(4.5px) rotate(45deg);
+}
+
+.boton-menu[aria-expanded="true"] .linea-menu:last-child {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* Menú desplegado en móvil: siempre con fondo legible */
+@media (max-width: 991.98px) {
+  .barra-navegacion:has(.navbar-collapse.show),
+  .barra-navegacion:has(.navbar-collapse.collapsing) {
+    background: rgba(245, 239, 228, 0.97);
+    backdrop-filter: blur(10px);
+  }
+
+  .barra-navegacion:has(.navbar-collapse.show) .nav-link,
+  .barra-navegacion:has(.navbar-collapse.show) .marca-nombre,
+  .barra-navegacion:has(.navbar-collapse.show) .linea-menu {
+    color: var(--texto-principal);
+  }
+
+  .barra-navegacion:has(.navbar-collapse.show) .marca-descriptor {
+    color: var(--color-oliva-oscuro);
+  }
+
+  /* Menú centrado, con renglones cómodos para el pulgar (≥44px) */
+  .lista-navegacion {
+    padding-block: 1rem 1.6rem;
+    gap: 0.15rem;
+    text-align: center;
+  }
+
+  .lista-navegacion .nav-link {
+    padding-block: 0.72rem;
+  }
+
+  /* El subrayado que crece es un gesto de cursor; en móvil sobra */
+  .lista-navegacion .nav-link::after {
+    display: none;
+  }
+
+  .boton-nav {
+    margin-top: 0.9rem;
+    display: inline-block;
+    padding-block: 0.72rem;
+  }
+}

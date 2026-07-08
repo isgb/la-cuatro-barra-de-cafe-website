@@ -1,0 +1,326 @@
+/* ============================================
+   Temporada + Carta + Origen + Métodos
+   ============================================ */
+
+/* ---- Temporada (sección oscura estilo campaña) ---- */
+.temporada {
+  background: var(--color-tinta);
+  color: var(--texto-sobre-oscuro);
+}
+
+.temporada .titulo-seccion {
+  color: var(--color-crema);
+}
+
+.temporada-nota {
+  color: var(--texto-suave-oscuro);
+  font-size: 0.95rem;
+  margin: 0 0 0.6rem;
+}
+
+/* Bebidas de temporada como láminas: foto limpia y
+   texto debajo, el mismo gesto del riel de la galería */
+.tarjeta-temporada {
+  height: 100%;
+}
+
+.tarjeta-temporada img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radio-tarjeta);
+  transition: filter var(--transicion-media);
+}
+
+.tarjeta-temporada:hover img {
+  filter: brightness(1.08);
+}
+
+.tarjeta-temporada-texto {
+  padding-top: 0.8rem;
+}
+
+.tarjeta-temporada-texto h3 {
+  font-family: var(--fuente-condensada);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-crema);
+  margin-bottom: 0.2rem;
+}
+
+.tarjeta-temporada-texto p {
+  font-size: 0.88rem;
+  color: var(--texto-suave-oscuro);
+  margin: 0;
+}
+
+.temporada-destacado {
+  margin: 0;
+  border-radius: var(--radio-tarjeta);
+  overflow: hidden;
+  border: var(--borde-crema);
+}
+
+.temporada-destacado img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.temporada-firma {
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.7rem;
+  color: var(--color-terracota);
+  margin-bottom: 0.3rem;
+}
+
+.temporada-firma span {
+  color: var(--color-oliva-claro);
+}
+
+.temporada-subtitulo {
+  font-size: var(--tamano-subtitulo);
+  color: var(--color-crema);
+}
+
+/* ---- Carta (menú con pestañas) ---- */
+.carta {
+  background: var(--color-crema);
+}
+
+.carta-pestanas {
+  gap: 0.6rem;
+  margin-block: var(--espacio-3) var(--espacio-4);
+  border: 0;
+}
+
+/* Pestañas como índice de carta impresa: solo texto
+   y un subrayado terracota que marca la sección activa */
+.carta-pestana {
+  font-family: var(--fuente-condensada);
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.3rem;
+  margin-inline: 1rem;
+  background: transparent;
+  color: var(--texto-secundario);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  transition: color var(--transicion-rapida), border-color var(--transicion-rapida);
+}
+
+.carta-pestana:hover {
+  color: var(--color-ambar-texto);
+}
+
+.carta-pestana.active {
+  background: transparent;
+  color: var(--texto-principal);
+  border-bottom-color: var(--color-terracota);
+}
+
+.carta-lista li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding-block: 0.85rem;
+}
+
+.carta-lista li + li {
+  border-top: 1px solid rgba(30, 27, 23, 0.12);
+}
+
+.carta-lista .platillo {
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  white-space: nowrap;
+}
+
+/* Línea punteada entre platillo y descripción, estilo carta impresa */
+.carta-lista .platillo::after {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  border-bottom: 1px dotted rgba(30, 27, 23, 0.35);
+  margin-left: 0.8rem;
+  vertical-align: 0.22em;
+}
+
+.carta-lista .descripcion {
+  color: var(--texto-secundario);
+  font-size: 0.94rem;
+}
+
+.carta-nota {
+  margin-top: var(--espacio-3);
+  padding: 1rem 1.3rem;
+  background: var(--color-crema-suave);
+  border-left: 3px solid var(--color-oliva);
+  border-radius: 0 var(--radio-suave) var(--radio-suave) 0;
+  font-size: 0.92rem;
+  color: var(--texto-secundario);
+}
+
+.carta-foto {
+  margin: 0;
+}
+
+.carta-foto img {
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+  border-radius: 999px 999px var(--radio-tarjeta) var(--radio-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+/* ---- Origen / Expendio ---- */
+.origen {
+  background: var(--color-crema-suave);
+}
+
+.origen-foto {
+  margin: var(--espacio-3) 0 0;
+}
+
+.origen-foto img {
+  border-radius: var(--radio-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  width: 100%;
+}
+
+/* Fichas de expendio planas: sin sombra ni elevación,
+   solo el borde se enciende al pasar el cursor */
+.tarjeta-origen {
+  height: 100%;
+  background: var(--color-blanco);
+  border: var(--borde-tinta);
+  border-radius: var(--radio-recto);
+  padding: 1.6rem 1.5rem 1.3rem;
+  transition: border-color var(--transicion-media);
+}
+
+.tarjeta-origen:hover {
+  border-color: var(--color-oliva);
+}
+
+.origen-region {
+  font-family: var(--fuente-condensada);
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-ambar-texto);
+  margin-bottom: 0.3rem;
+}
+
+.origen-variedad {
+  font-size: 1.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.origen-datos {
+  margin: 0;
+}
+
+.origen-datos div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.42rem;
+  font-size: 0.9rem;
+}
+
+.origen-datos div + div {
+  border-top: 1px solid rgba(30, 27, 23, 0.1);
+}
+
+.origen-datos dt {
+  font-weight: 500;
+  color: var(--texto-secundario);
+}
+
+.origen-datos dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+}
+
+.origen-nota {
+  margin-top: var(--espacio-3);
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  color: var(--texto-secundario);
+}
+
+/* ---- Métodos (pizarrón del brew bar) ---- */
+.metodos {
+  background: var(--color-oliva-oscuro);
+  color: var(--color-crema-suave);
+  position: relative;
+}
+
+.metodos .titulo-seccion {
+  color: var(--color-blanco);
+}
+
+.metodos-intro {
+  color: var(--color-oliva-claro);
+}
+
+/* Renglones de pizarrón: nombre a mano, detalle al centro
+   y tiempo a la derecha, como la carta escrita de la barra */
+.pizarron-lista {
+  max-width: 54rem;
+  margin: var(--espacio-4) auto 0;
+}
+
+.metodo {
+  display: grid;
+  grid-template-columns: 9rem 1fr auto;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-block: 1.4rem;
+  border-bottom: 1px solid rgba(245, 239, 228, 0.25);
+  transition: border-color var(--transicion-media);
+}
+
+.metodo:first-child {
+  border-top: 1px solid rgba(245, 239, 228, 0.25);
+}
+
+.metodo:hover {
+  border-bottom-color: var(--color-terracota);
+}
+
+.metodo-nombre {
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--color-blanco);
+}
+
+.metodo-detalle {
+  font-size: 0.95rem;
+  color: var(--color-crema-suave);
+}
+
+.metodo-tiempo {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--color-terracota-clara);
+  white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .metodo {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}

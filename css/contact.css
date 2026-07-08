@@ -1,0 +1,169 @@
+/* ============================================
+   Visítanos (ubicación/horarios) + Contacto
+   ============================================ */
+
+/* ---- Visítanos ---- */
+.visita {
+  background: var(--color-crema);
+}
+
+.visita-direccion {
+  font-family: var(--fuente-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.5;
+  margin-bottom: var(--espacio-3);
+}
+
+.tabla-horario {
+  width: 100%;
+  max-width: 24rem;
+  border-collapse: collapse;
+  margin-bottom: var(--espacio-3);
+}
+
+.tabla-horario th,
+.tabla-horario td {
+  padding: 0.7rem 0.2rem;
+  border-bottom: 1px solid rgba(30, 27, 23, 0.12);
+  font-size: 0.98rem;
+}
+
+.tabla-horario th {
+  font-weight: 500;
+  text-align: left;
+  color: var(--texto-secundario);
+}
+
+.tabla-horario td {
+  text-align: right;
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.12em;
+  font-size: 1.05rem;
+}
+
+.visita-redes-titulo {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--color-ambar-texto);
+  margin-bottom: 0.6rem;
+}
+
+.visita-redes ul {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.visita-redes a {
+  font-weight: 500;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+.visita-redes a:hover {
+  border-bottom-color: var(--color-ambar);
+}
+
+.visita-mapa {
+  height: 100%;
+  min-height: 26rem;
+  border-radius: var(--radio-tarjeta);
+  overflow: hidden;
+  border: var(--borde-tinta);
+  box-shadow: var(--sombra-tarjeta);
+  /* El mapa hereda un filtro cálido para integrarse a la paleta */
+  filter: sepia(0.22) saturate(0.9);
+}
+
+.visita-mapa iframe {
+  min-height: 26rem;
+}
+
+/* ---- Contacto ---- */
+.contacto {
+  background: var(--color-tinta);
+  color: var(--texto-sobre-oscuro);
+}
+
+.contacto .titulo-seccion {
+  color: var(--color-crema);
+}
+
+.contacto .texto-secundario {
+  color: var(--texto-suave-oscuro);
+}
+
+.contacto a {
+  color: var(--color-terracota);
+}
+
+.contacto a:hover {
+  color: var(--color-oliva-claro);
+}
+
+.formulario {
+  background: var(--color-tinta-suave);
+  border: var(--borde-crema);
+  border-radius: var(--radio-tarjeta);
+  padding: clamp(1.4rem, 1rem + 2vw, 2.4rem);
+}
+
+.formulario-etiqueta {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--color-oliva-claro);
+}
+
+.formulario-campo {
+  background: rgba(245, 239, 228, 0.06);
+  border: 1px solid rgba(241, 234, 217, 0.25);
+  border-radius: var(--radio-suave);
+  color: var(--color-crema);
+  padding: 0.75rem 1rem;
+  transition: border-color var(--transicion-rapida), background var(--transicion-rapida);
+}
+
+.formulario-campo::placeholder {
+  color: rgba(179, 169, 149, 0.6);
+}
+
+.formulario-campo:focus {
+  background: rgba(245, 239, 228, 0.1);
+  border-color: var(--color-ambar);
+  color: var(--color-crema);
+  box-shadow: none;
+}
+
+/* Select con flecha clara sobre fondo oscuro */
+select.formulario-campo {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23f1ead9' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+select.formulario-campo option {
+  color: var(--texto-principal);
+  background: var(--color-crema);
+}
+
+.formulario-campo.invalido {
+  border-color: var(--color-terracota-oscura);
+}
+
+.formulario-error {
+  min-height: 1.1rem;
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-terracota);
+}
+
+.formulario-estado {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-oliva-claro);
+}

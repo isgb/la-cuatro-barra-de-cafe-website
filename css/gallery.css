@@ -1,0 +1,202 @@
+/* ============================================
+   Galería en carrusel (Swiper) + visor (lightbox)
+   ============================================ */
+
+.galeria {
+  background: var(--color-crema);
+}
+
+/* Carrusel de la casa: la foto activa queda centrada e
+   iluminada, las vecinas se atenúan como cuadros en penumbra.
+   Los pies escritos a mano siguen visibles bajo cada imagen */
+.galeria-carrusel {
+  margin-top: var(--espacio-4);
+}
+
+.galeria-pieza {
+  width: min(19rem, 72vw);
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+/* Alturas escalonadas: las piezas pares bajan un paso */
+.galeria-pieza:nth-child(even) {
+  margin-top: 2.4rem;
+}
+
+.galeria-pieza picture {
+  display: block;
+  transform: scale(0.94);
+  filter: brightness(0.82) saturate(0.85);
+  transition: transform 0.65s ease, filter 0.65s ease;
+}
+
+.galeria-pieza.swiper-slide-active picture {
+  transform: none;
+  filter: none;
+}
+
+.galeria-pieza img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radio-tarjeta);
+  transition: filter var(--transicion-media);
+}
+
+.galeria-pieza::after {
+  content: attr(data-titulo);
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.1rem;
+  color: var(--texto-secundario);
+  transition: color var(--transicion-media);
+}
+
+.galeria-pieza.swiper-slide-active::after {
+  color: var(--texto-principal);
+}
+
+.galeria-pieza:hover img,
+.galeria-pieza:focus-visible img {
+  filter: brightness(1.07);
+}
+
+/* ---- Controles del carrusel: letrero con contador ---- */
+.galeria-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: var(--espacio-2);
+}
+
+.galeria-flecha {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radio-recto);
+  background: transparent;
+  color: var(--color-oliva-oscuro);
+  font-size: 1.7rem;
+  line-height: 1;
+  transition: background var(--transicion-rapida), color var(--transicion-rapida), border-color var(--transicion-rapida);
+}
+
+.galeria-flecha:hover {
+  background: var(--color-oliva);
+  border-color: var(--color-oliva);
+  color: var(--color-crema);
+}
+
+/* Contador tipo pizarra: la cifra actual en tinta, el total detrás.
+   El ancho fijo anula el width: 100% que Swiper da a la fracción */
+.galeria-contador {
+  width: 5rem;
+  text-align: center;
+  font-family: var(--fuente-condensada);
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  color: var(--texto-secundario);
+}
+
+.galeria-contador .swiper-pagination-current {
+  font-size: 1.5rem;
+  color: var(--texto-principal);
+}
+
+/* ---- Visor de imágenes ---- */
+.visor {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(20, 18, 15, 0.94);
+}
+
+.visor[hidden] {
+  display: none;
+}
+
+.visor-figura {
+  margin: 0;
+  max-width: min(880px, 86vw);
+  text-align: center;
+}
+
+.visor-imagen {
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  margin-inline: auto;
+  border-radius: var(--radio-suave);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.visor-titulo {
+  margin-top: 1rem;
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--texto-suave-oscuro);
+}
+
+.visor-cerrar {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.6rem;
+  font-size: 2.4rem;
+  line-height: 1;
+  background: none;
+  border: 0;
+  color: var(--color-crema);
+  transition: color var(--transicion-rapida), transform var(--transicion-rapida);
+}
+
+.visor-cerrar:hover {
+  color: var(--color-terracota);
+  transform: rotate(90deg);
+}
+
+.visor-flecha {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245, 239, 228, 0.4);
+  background: none;
+  color: var(--color-crema);
+  font-size: 1.7rem;
+  line-height: 1;
+  transition: background var(--transicion-rapida), border-color var(--transicion-rapida);
+}
+
+.visor-flecha:hover {
+  background: var(--color-oliva);
+  border-color: var(--color-oliva);
+}
+
+@media (max-width: 575.98px) {
+  .visor {
+    padding: 1rem;
+  }
+
+  .visor-flecha {
+    position: absolute;
+    bottom: 1.2rem;
+    z-index: 1;
+  }
+
+  .visor-anterior { left: 1.2rem; }
+  .visor-siguiente { right: 1.2rem; }
+}

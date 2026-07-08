@@ -1,0 +1,89 @@
+{
+  "nota": "Fuente de contenido del menú. El HTML de index.html se genera a partir de este archivo; si cambia la carta, actualizar ambos.",
+  "precios": "Los precios se consultan en barra. Pendiente de lista oficial del cliente.",
+  "categorias": [
+    {
+      "id": "espresso",
+      "nombre": "Espresso",
+      "bebidas": [
+        { "nombre": "Espresso", "descripcion": "Doble, de microlote poblano" },
+        { "nombre": "Americano", "descripcion": "Caliente o con hielo" },
+        { "nombre": "Latte", "descripcion": "Caliente o frío, con arte en leche" },
+        { "nombre": "Cappuccino", "descripcion": "Espuma sedosa, taza de talavera" },
+        { "nombre": "Iced Mocha", "descripcion": "Espresso, cacao y leche fría" },
+        { "nombre": "Shaken Affogato", "descripcion": "Espresso agitado con helado" },
+        { "nombre": "Tónico con Yuzu", "descripcion": "Espresso, agua tónica y cítrico japonés" },
+        { "nombre": "Chocolate caliente", "descripcion": "Cacao de casa" }
+      ]
+    },
+    {
+      "id": "filtrados",
+      "nombre": "Brew bar",
+      "bebidas": [
+        { "nombre": "V60", "descripcion": "Filtrado limpio y brillante, elige tu origen" },
+        { "nombre": "Chemex", "descripcion": "Para compartir, taza suave y sedosa" },
+        { "nombre": "Kalita 102", "descripcion": "Extracción pareja, dulzor redondo" },
+        { "nombre": "Cold Brew", "descripcion": "12 horas de extracción en frío" }
+      ]
+    },
+    {
+      "id": "temporada",
+      "nombre": "Temporada",
+      "bebidas": [
+        { "nombre": "Brown Shaken Espresso", "descripcion": "Espresso agitado, azúcar morena" },
+        { "nombre": "Matcha con foam de mango", "descripcion": "Fruta fresca de temporada" },
+        { "nombre": "Strawberry Matcha", "descripcion": "El clásico de la casa" },
+        { "nombre": "Flotante de Limón", "descripcion": "Con cold brew" },
+        { "nombre": "Jamaica Brew", "descripcion": "Jamaica + cold brew" },
+        { "nombre": "Chocoreta Latte", "descripcion": "Invierno: chocolate y menta" },
+        { "nombre": "Olla Latte", "descripcion": "Invierno: espresso con café de olla" },
+        { "nombre": "Toffee Nut Latte", "descripcion": "Invierno: caramelo y nuez" }
+      ]
+    },
+    {
+      "id": "reposteria",
+      "nombre": "Repostería",
+      "bebidas": [
+        { "nombre": "Pain suisse de pistache", "descripcion": "Brûlée Baked Goods" },
+        { "nombre": "Croissant de curd de limón", "descripcion": "Con chocolate blanco" },
+        { "nombre": "Croissant de caramelo", "descripcion": "Con chocolate" },
+        { "nombre": "Estrella de maracuyá", "descripcion": "Hojaldre de temporada" },
+        { "nombre": "Chocolatín", "descripcion": "El infaltable" },
+        { "nombre": "Strudel de manzana", "descripcion": "Especiado, para compartir" },
+        { "nombre": "Panqué de limón", "descripcion": "De la vitrina de casa" },
+        { "nombre": "Rol de canela y nuez", "descripcion": "También de arándano con crema" }
+      ]
+    }
+  ],
+  "origenes": [
+    {
+      "region": "Huitzilán de Serdán",
+      "variedad": "Marsellesa",
+      "productor": "Pablo Aco",
+      "proceso": "Lavado",
+      "notas": "Tradicional, cítrico"
+    },
+    {
+      "region": "Huitzilán de Serdán",
+      "variedad": "AnaCafé",
+      "productor": "Samuel López Galicia",
+      "proceso": "Natural",
+      "notas": "Frutos rojos"
+    },
+    {
+      "region": "Totutla",
+      "variedad": "Marsellesa",
+      "productor": "Gema Magali Posadas",
+      "proceso": "Fermentación anaeróbica",
+      "notas": "Frutos rojos"
+    },
+    {
+      "region": "Huitzilán de Serdán",
+      "variedad": "AnaCafé",
+      "productor": "Samuel López Galicia",
+      "proceso": "Fermentación láctica",
+      "notas": "Floral"
+    }
+  ],
+  "presentaciones": ["1/4 kg", "1/2 kg", "1 kg"]
+}

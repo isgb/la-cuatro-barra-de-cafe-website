@@ -1,0 +1,212 @@
+/* ============================================
+   Eventos + Comunidad + Preguntas frecuentes
+   ============================================ */
+
+/* ---- Eventos y colaboraciones ---- */
+.eventos {
+  background: var(--color-madera-oscura);
+  color: var(--texto-sobre-oscuro);
+}
+
+.eventos .titulo-seccion {
+  color: var(--color-crema);
+}
+
+.eventos .texto-secundario {
+  color: var(--texto-suave-oscuro);
+}
+
+/* El cartel del aniversario bajo el arco colonial,
+   el mismo gesto de la portada y la carta */
+.eventos-cartel {
+  margin: 0;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+
+.eventos-cartel img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 999px 999px var(--radio-tarjeta) var(--radio-tarjeta);
+  border: 1px solid rgba(241, 234, 217, 0.25);
+}
+
+.lista-colaboradores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-block: var(--espacio-2) var(--espacio-3);
+}
+
+.lista-colaboradores li {
+  font-family: var(--fuente-condensada);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(241, 234, 217, 0.35);
+  border-radius: var(--radio-recto);
+  transition: border-color var(--transicion-rapida), background var(--transicion-rapida);
+}
+
+.lista-colaboradores li:hover {
+  border-color: var(--color-terracota);
+  background: rgba(217, 138, 107, 0.12);
+}
+
+.lista-colaboradores span {
+  color: var(--color-terracota);
+  margin-left: 0.4rem;
+}
+
+/* ---- Comunidad ---- */
+.comunidad {
+  background: var(--color-crema);
+}
+
+/* Comentarios sin caja: texto que respira sobre la crema,
+   con la comilla manuscrita como único adorno */
+.opinion {
+  height: 100%;
+  margin: 0;
+}
+
+.opinion::before {
+  content: '“';
+  display: block;
+  font-family: var(--fuente-manuscrita);
+  font-size: 2.8rem;
+  line-height: 0.6;
+  color: var(--color-terracota);
+}
+
+.opinion p {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0.6rem 0 0.9rem;
+  text-wrap: balance;
+}
+
+.opinion cite {
+  font-style: normal;
+  font-family: var(--fuente-condensada);
+  font-size: 0.88rem;
+  letter-spacing: 0.18em;
+  color: var(--color-oliva-oscuro);
+}
+
+/* Bloque de playlists sin recuadro: dos filetes lo enmarcan */
+.playlists {
+  text-align: center;
+  padding: 2.2rem 1rem;
+  border-block: var(--borde-tinta);
+}
+
+.playlists-titulo {
+  font-family: var(--fuente-manuscrita);
+  font-size: 2rem;
+  color: var(--color-oliva-oscuro);
+  margin-bottom: 0.4rem;
+}
+
+.playlists-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.playlists-enlaces a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  padding: 0.6rem 1.4rem;
+  border: 1.5px solid var(--color-oliva);
+  border-radius: var(--radio-recto);
+  color: var(--color-oliva-oscuro);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+/* Logotipo de Spotify en su verde oficial para invitar
+   a abrir la playlist en la plataforma */
+.logo-spotify {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  fill: #1db954;
+}
+
+.playlists-enlaces a:hover {
+  background: var(--color-oliva);
+  color: var(--color-crema);
+}
+
+/* ---- Preguntas frecuentes ---- */
+.preguntas {
+  background: var(--color-crema-suave);
+}
+
+.acordeon {
+  --bs-accordion-border-width: 0;
+  --bs-accordion-bg: transparent;
+}
+
+.acordeon-elemento {
+  background: var(--color-blanco);
+  border: var(--borde-tinta);
+  border-radius: var(--radio-suave);
+  overflow: hidden;
+}
+
+.acordeon-elemento + .acordeon-elemento {
+  margin-top: 0.8rem;
+}
+
+.acordeon-boton {
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: var(--texto-principal);
+  padding: 1.2rem 1.4rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.acordeon-boton:not(.collapsed) {
+  background: transparent;
+  color: var(--color-oliva-oscuro);
+  box-shadow: none;
+}
+
+.acordeon-boton:focus {
+  box-shadow: 0 0 0 3px rgba(184, 118, 58, 0.4);
+}
+
+/* Icono +/− propio en lugar de la flecha de Bootstrap */
+.acordeon-boton::after {
+  content: '+';
+  background: none;
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  width: auto;
+  height: auto;
+  color: var(--color-terracota);
+  transition: transform var(--transicion-rapida);
+}
+
+.acordeon-boton:not(.collapsed)::after {
+  content: '−';
+  transform: none;
+}
+
+.acordeon-cuerpo {
+  padding: 0 1.4rem 1.3rem;
+  color: var(--texto-secundario);
+}

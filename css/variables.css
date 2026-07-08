@@ -1,0 +1,103 @@
+/* ============================================
+   LA CUATRO BARRA DE CAFÉ
+   Tokens de diseño: fuentes, colores, espaciado
+   ============================================ */
+
+/* ---- Fuentes autohospedadas ---- */
+
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bebasneue-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/caveat-600.woff2') format('woff2');
+}
+
+:root {
+  /* ---- Paleta tomada del local real ----
+     oliva: cerámica Edimburgo de la barra y logo
+     terracota: fachada colonial de Av. 4 Oriente
+     madera: barra y mobiliario
+     crema: muros interiores
+     tinta: gráficas de campaña en Instagram
+     ámbar: crema del espresso y focos de filamento */
+  --color-oliva: #6e7350;
+  --color-oliva-claro: #a8ac8c;
+  --color-oliva-oscuro: #4c503a;
+  --color-oliva-profundo: #5d6142; /* fondo con texto crema, contraste AA */
+  --color-terracota: #d98a6b;
+  --color-terracota-oscura: #b96a4e;
+  --color-terracota-clara: #f6d3bf; /* acentos sobre fondos oliva, contraste AA */
+  --color-madera: #8b6239;
+  --color-madera-oscura: #3e2a1d;
+  --color-crema: #f5efe4;
+  --color-crema-suave: #efe6d5;
+  --color-tinta: #1e1b17;
+  --color-tinta-suave: #2a251f;
+  --color-ambar: #b8763a;
+  --color-ambar-texto: #8f5c2c; /* ámbar oscurecido para texto sobre fondos claros */
+  --color-blanco: #fdfbf7;
+
+  /* ---- Texto ---- */
+  --texto-principal: #262219;
+  --texto-secundario: #5c5546;
+  --texto-sobre-oscuro: #f1ead9;
+  --texto-suave-oscuro: #b3a995;
+
+  /* ---- Tipografía ----
+     La voz de la marca es de rótulo de expendio: Bebas Neue
+     para el nombre y los letreros, Inter con peso para títulos
+     y lectura, Caveat para las notas a mano del pizarrón. */
+  --fuente-display: 'Inter', helvetica, arial, sans-serif;
+  --fuente-condensada: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --fuente-texto: 'Inter', helvetica, arial, sans-serif;
+  --fuente-manuscrita: 'Caveat', cursive;
+
+  /* ---- Escala tipográfica fluida ---- */
+  --tamano-etiqueta: clamp(0.8rem, 0.75rem + 0.2vw, 0.95rem);
+  --tamano-texto: clamp(0.98rem, 0.92rem + 0.2vw, 1.08rem);
+  --tamano-subtitulo: clamp(1.3rem, 1.1rem + 0.9vw, 2rem);
+  --tamano-titulo: clamp(1.9rem, 1.35rem + 2.4vw, 3.1rem);
+  --tamano-gigante: clamp(3.2rem, 2rem + 6vw, 7rem);
+
+  /* ---- Espaciado ---- */
+  --espacio-1: 0.5rem;
+  --espacio-2: 1rem;
+  --espacio-3: 1.5rem;
+  --espacio-4: 2.5rem;
+  --espacio-5: 4rem;
+  --espacio-seccion: clamp(4.5rem, 3.5rem + 5.5vw, 9rem);
+
+  /* ---- Bordes y sombras ----
+     Regla de formas: botones, pestañas y etiquetas rectos (2px),
+     como letreros pintados; tarjetas apenas suavizadas (8px);
+     las fotos protagonistas llevan el arco colonial. */
+  --radio-recto: 2px;
+  --radio-suave: 4px;
+  --radio-tarjeta: 8px;
+  --borde-tinta: 1px solid rgba(30, 27, 23, 0.14);
+  --borde-crema: 1px solid rgba(241, 234, 217, 0.16);
+  --sombra-tarjeta: 0 18px 45px -18px rgba(62, 42, 29, 0.35);
+  --sombra-flotante: 0 10px 30px -10px rgba(30, 27, 23, 0.45);
+
+  /* ---- Transiciones ---- */
+  --transicion-rapida: 0.22s ease;
+  --transicion-media: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  --transicion-lenta: 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}

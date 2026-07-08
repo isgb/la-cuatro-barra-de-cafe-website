@@ -1,0 +1,183 @@
+/* ============================================
+   Reset y base global del sitio
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* compensa la navbar fija en anclas */
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: var(--tamano-texto);
+  line-height: 1.65;
+  color: var(--texto-principal);
+  background-color: var(--color-crema);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--espacio-2);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 var(--espacio-2);
+}
+
+a {
+  color: var(--color-oliva-oscuro);
+  text-decoration: none;
+  transition: color var(--transicion-rapida);
+}
+
+a:hover {
+  color: var(--color-ambar);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background-color: var(--color-oliva);
+  color: var(--color-crema);
+}
+
+/* Enlace para saltar al contenido (accesibilidad) */
+.enlace-salto {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 3000;
+  padding: 0.6rem 1.2rem;
+  background: var(--color-tinta);
+  color: var(--color-crema);
+  border-radius: 0 0 var(--radio-suave) var(--radio-suave);
+}
+
+.enlace-salto:focus {
+  top: 0;
+  color: var(--color-crema);
+}
+
+/* Foco visible consistente */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-ambar);
+  outline-offset: 2px;
+}
+
+/* ---- Utilidades compartidas entre secciones ---- */
+
+.seccion {
+  padding-block: var(--espacio-seccion);
+}
+
+/* Etiqueta de sección escrita a mano, como nota de pizarrón */
+.etiqueta-seccion {
+  display: inline-block;
+  font-family: var(--fuente-manuscrita);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  font-weight: 600;
+  color: var(--color-ambar-texto);
+  margin-bottom: 0.6rem;
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
+/* Sobre fondos oscuros la etiqueta usa terracota claro */
+.contacto .etiqueta-seccion {
+  color: var(--color-terracota);
+}
+
+.titulo-seccion {
+  font-size: var(--tamano-titulo);
+}
+
+/* Guion de la marca: el trazo terracota que parte "Cua—tro",
+   dibujado con CSS para controlar su grosor y color */
+.guion-marca {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.075em;
+  margin-inline: 0.06em;
+  border-radius: 2px;
+  background: var(--color-terracota);
+  vertical-align: 0.26em;
+}
+
+.texto-secundario {
+  color: var(--texto-secundario);
+}
+
+/* Iconos de redes sociales dibujados en línea: heredan el color
+   del enlace y su transición de hover, como un letrero monocromo.
+   El logotipo de Spotify (.logo-spotify) conserva su verde oficial. */
+.icono-red-social {
+  width: 1.05em;
+  height: 1.05em;
+  fill: currentColor;
+  vertical-align: -0.16em;
+  margin-right: 0.45em;
+}
+
+/* Estado inicial de los elementos con revelado al hacer scroll:
+   fundido en su sitio, sin desplazamiento, ritmo sereno */
+.revelar {
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.revelar.visible {
+  opacity: 1;
+}
+
+/* Sin animaciones para quien lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

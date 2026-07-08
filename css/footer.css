@@ -1,0 +1,68 @@
+/* ============================================
+   Pie de página
+   ============================================ */
+
+.pie {
+  background: var(--color-tinta);
+  color: var(--texto-suave-oscuro);
+  border-top: var(--borde-crema);
+  padding-block: var(--espacio-5) var(--espacio-2);
+}
+
+.pie-superior {
+  padding-bottom: var(--espacio-4);
+}
+
+.pie-marca {
+  font-family: var(--fuente-condensada);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 2.1rem + 2.2vw, 4rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--color-crema);
+  margin-bottom: 0.4rem;
+}
+
+.pie-lema {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.pie-titulo {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--color-oliva-claro);
+  margin-bottom: 0.9rem;
+}
+
+.pie-lista li {
+  margin-bottom: 0.45rem;
+  font-size: 0.94rem;
+}
+
+.pie-lista a {
+  color: var(--texto-suave-oscuro);
+}
+
+.pie-lista a:hover {
+  color: var(--color-terracota);
+}
+
+.pie-inferior {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding-top: var(--espacio-3);
+  border-top: 1px solid rgba(241, 234, 217, 0.12);
+  font-size: 0.84rem;
+}
+
+.pie-inferior p {
+  margin: 0;
+}

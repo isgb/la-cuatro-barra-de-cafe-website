@@ -1,0 +1,210 @@
+/* ============================================
+   Hero de portada + botones globales
+   ============================================ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background: var(--color-tinta);
+  color: var(--texto-sobre-oscuro);
+  overflow: hidden;
+  padding-block: 7rem 4rem;
+}
+
+/* Fondo: fachada con tratamiento duotono para dar atmósfera */
+.hero-fondo {
+  position: absolute;
+  inset: 0;
+  background-image: url('../img/hero/fachada.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: sepia(0.4) saturate(0.75) brightness(0.42);
+  transform: scale(1.05);
+}
+
+.hero-fondo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(110, 115, 80, 0.35), transparent 55%),
+    linear-gradient(to top, var(--color-tinta) 4%, transparent 45%),
+    linear-gradient(to bottom, rgba(30, 27, 23, 0.75), transparent 40%);
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-manuscrito {
+  font-family: var(--fuente-manuscrita);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  color: var(--color-terracota);
+  margin-bottom: 0.4rem;
+  transform: rotate(-2deg);
+  transform-origin: left;
+}
+
+.hero-titulo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--espacio-3);
+  color: var(--color-crema);
+}
+
+.hero-linea {
+  display: block;
+}
+
+/* Wordmark en condensada, como el rótulo pintado de un expendio */
+.hero-linea-grande {
+  font-family: var(--fuente-condensada);
+  font-weight: 400;
+  font-size: calc(var(--tamano-gigante) * 1.45);
+  line-height: 0.9;
+  letter-spacing: 0.015em;
+  color: var(--color-oliva-claro);
+}
+
+.hero-sub {
+  font-family: var(--fuente-condensada);
+  font-size: clamp(1rem, 0.9rem + 0.8vw, 1.5rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--texto-suave-oscuro);
+  margin-top: 1rem;
+}
+
+.hero-descripcion {
+  max-width: 34rem;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  color: var(--texto-suave-oscuro);
+  margin-bottom: var(--espacio-3);
+}
+
+.hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Entrada escalonada del hero al cargar la página */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-manuscrito {
+    animation: hero-aparecer 0.8s ease backwards;
+  }
+
+  .hero-titulo,
+  .hero-descripcion,
+  .hero-acciones,
+  .hero-arco {
+    animation: hero-subir 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .hero-titulo { animation-delay: 0.1s; }
+  .hero-descripcion { animation-delay: 0.24s; }
+  .hero-acciones { animation-delay: 0.36s; }
+  .hero-arco { animation-delay: 0.3s; }
+}
+
+@keyframes hero-aparecer {
+  from { opacity: 0; }
+}
+
+@keyframes hero-subir {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* ---- Imagen en forma de arco colonial ---- */
+.hero-arco {
+  position: relative;
+  margin: 0 auto;
+  max-width: 24rem;
+}
+
+.hero-arco img {
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  object-fit: cover;
+  border-radius: 999px 999px 18px 18px;
+  border: 1px solid rgba(241, 234, 217, 0.25);
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.8);
+}
+
+.hero-arco::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border: 1px solid rgba(217, 138, 107, 0.45);
+  border-radius: 999px 999px 24px 24px;
+  pointer-events: none;
+}
+
+.hero-arco-nota {
+  margin-top: 1.1rem;
+  text-align: center;
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--texto-suave-oscuro);
+}
+
+/* ---- Botones compartidos ---- */
+/* Botones rectos, como letreros pintados de expendio.
+   El hover no salta: rellena o cambia de tono en su sitio. */
+.boton-principal {
+  display: inline-block;
+  font-family: var(--fuente-condensada);
+  font-size: 1.02rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 2.1rem;
+  background: var(--color-terracota);
+  color: var(--color-tinta);
+  border: 0;
+  border-radius: var(--radio-recto);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+.boton-principal:hover {
+  background: var(--color-oliva-oscuro);
+  color: var(--color-crema);
+}
+
+/* Empuje físico al hacer clic */
+.boton-principal:active,
+.boton-secundario:active,
+.boton-nav:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.boton-secundario {
+  display: inline-block;
+  font-family: var(--fuente-condensada);
+  font-size: 1.02rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 2.1rem;
+  background: transparent;
+  color: inherit;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radio-recto);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida), border-color var(--transicion-rapida);
+}
+
+.boton-secundario:hover {
+  background: var(--color-oliva);
+  border-color: var(--color-oliva);
+  color: var(--color-crema);
+}
+
+.boton-sobre-oscuro {
+  color: var(--texto-sobre-oscuro);
+}
