@@ -53,6 +53,24 @@
   color: var(--color-terracota);
 }
 
+.ubicacion-enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transicion-rapida);
+}
+
+.icono-ubicacion {
+  width: 1.1em;
+  height: 1.1em;
+  color: #dc3545;
+  flex-shrink: 0;
+}
+
+.ubicacion-enlace:hover .icono-ubicacion {
+  color: #bb2d3b;
+}
+
 .pie-inferior {
   display: flex;
   flex-wrap: wrap;
