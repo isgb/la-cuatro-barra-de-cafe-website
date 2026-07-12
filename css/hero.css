@@ -170,12 +170,14 @@
   color: var(--color-tinta);
   border: 0;
   border-radius: var(--radio-recto);
-  transition: background var(--transicion-rapida), color var(--transicion-rapida);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida), transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
 }
 
 .boton-principal:hover {
   background: var(--color-oliva-oscuro);
   color: var(--color-crema);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -12px rgba(30, 27, 23, 0.55);
 }
 
 /* Empuje físico al hacer clic */
@@ -207,4 +209,55 @@
 
 .boton-sobre-oscuro {
   color: var(--texto-sobre-oscuro);
+}
+
+/* ---- Cinta marquee ----
+   Rótulo en movimiento entre el hero y la historia, con el
+   guion terracota de la marca como separador. La pista se
+   duplica para que el desplazamiento sea continuo. */
+.cinta {
+  background: var(--color-oliva-profundo);
+  border-block: 1px solid rgba(241, 234, 217, 0.16);
+  overflow: hidden;
+  padding-block: 0.9rem;
+}
+
+.cinta-pista {
+  display: flex;
+  width: max-content;
+}
+
+.cinta-grupo {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding-right: 2.2rem;
+  font-family: var(--fuente-condensada);
+  font-size: 1.05rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-crema-suave);
+  white-space: nowrap;
+}
+
+.cinta-guion {
+  display: inline-block;
+  width: 1.6rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-terracota);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cinta-pista {
+    animation: cinta-desplazar 28s linear infinite;
+  }
+
+  .cinta:hover .cinta-pista {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes cinta-desplazar {
+  to { transform: translateX(-50%); }
 }

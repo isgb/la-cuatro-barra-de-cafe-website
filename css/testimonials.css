@@ -24,12 +24,23 @@
   margin-inline: auto;
 }
 
+.eventos-cartel picture {
+  display: block;
+  overflow: hidden;
+  border-radius: 999px 999px var(--radio-tarjeta) var(--radio-tarjeta);
+}
+
 .eventos-cartel img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 999px 999px var(--radio-tarjeta) var(--radio-tarjeta);
   border: 1px solid rgba(241, 234, 217, 0.25);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.eventos-cartel:hover img {
+  transform: scale(1.04);
 }
 
 .lista-colaboradores {
@@ -79,6 +90,12 @@
   font-size: 2.8rem;
   line-height: 0.6;
   color: var(--color-terracota);
+  transition: transform var(--transicion-media);
+  transform-origin: left bottom;
+}
+
+.opinion:hover::before {
+  transform: scale(1.18) rotate(-6deg);
 }
 
 .opinion p {

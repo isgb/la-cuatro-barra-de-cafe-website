@@ -45,28 +45,24 @@
     margin-top: 0;
   }
 
-  .carta-pestanas {
-    gap: 0.3rem;
-  }
-
-  /* Área táctil cómoda para pestañas y enlaces de playlist */
-  .carta-pestana {
-    margin-inline: 0.5rem;
-    font-size: 0.9rem;
-    padding-block: 0.7rem;
-  }
-
+  /* Área táctil cómoda para los enlaces de playlist */
   .playlists-enlaces a {
     padding-block: 0.75rem;
   }
 
-  .carta-lista li {
-    flex-direction: column;
-    gap: 0.15rem;
+  /* El catálogo del menú pasa a dos columnas compactas */
+  .carta-grid {
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 0.9rem;
   }
 
-  .carta-lista .platillo::after {
-    display: none;
+  .carta-controles {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .carta-busqueda {
+    width: 100%;
   }
 
   .lista-colaboradores li {

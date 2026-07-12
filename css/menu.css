@@ -19,9 +19,22 @@
 }
 
 /* Bebidas de temporada como láminas: foto limpia y
-   texto debajo, el mismo gesto del riel de la galería */
+   texto debajo, el mismo gesto del riel de la galería.
+   Al pasar el cursor la lámina se levanta y la foto se
+   acerca despacio, como tomar la bebida de la vitrina */
 .tarjeta-temporada {
   height: 100%;
+  transition: transform var(--transicion-media);
+}
+
+.tarjeta-temporada:hover {
+  transform: translateY(-6px);
+}
+
+.tarjeta-temporada picture {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radio-tarjeta);
 }
 
 .tarjeta-temporada img {
@@ -29,11 +42,20 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radio-tarjeta);
-  transition: filter var(--transicion-media);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter var(--transicion-media);
 }
 
 .tarjeta-temporada:hover img {
+  transform: scale(1.05);
   filter: brightness(1.08);
+}
+
+.tarjeta-temporada-texto h3 {
+  transition: color var(--transicion-rapida);
+}
+
+.tarjeta-temporada:hover .tarjeta-temporada-texto h3 {
+  color: var(--color-terracota);
 }
 
 .tarjeta-temporada-texto {
@@ -84,97 +106,518 @@
   color: var(--color-crema);
 }
 
-/* ---- Carta (menú con pestañas) ---- */
+/* ---- Carta (catálogo interactivo del menú) ---- */
 .carta {
   background: var(--color-crema);
 }
 
-.carta-pestanas {
-  gap: 0.6rem;
-  margin-block: var(--espacio-3) var(--espacio-4);
-  border: 0;
+/* Controles: chips de categoría a la izquierda, buscador a la derecha */
+.carta-controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: var(--espacio-3) var(--espacio-2);
 }
 
-/* Pestañas como índice de carta impresa: solo texto
-   y un subrayado terracota que marca la sección activa */
-.carta-pestana {
+.carta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Chips rectos como letreros pintados; el activo se rellena de oliva */
+.carta-chip {
   font-family: var(--fuente-condensada);
-  font-size: 1.05rem;
-  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  padding: 0.5rem 0.3rem;
-  margin-inline: 1rem;
+  padding: 0.55rem 1.2rem;
   background: transparent;
   color: var(--texto-secundario);
-  border: 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  transition: color var(--transicion-rapida), border-color var(--transicion-rapida);
+  border: 1.5px solid rgba(30, 27, 23, 0.25);
+  border-radius: var(--radio-recto);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida), border-color var(--transicion-rapida);
 }
 
-.carta-pestana:hover {
+.carta-chip:hover {
+  border-color: var(--color-oliva);
+  color: var(--color-oliva-oscuro);
+}
+
+.carta-chip.activo {
+  background: var(--color-oliva);
+  border-color: var(--color-oliva);
+  color: var(--color-crema);
+}
+
+.carta-chip:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.carta-busqueda {
+  width: min(19rem, 100%);
+  padding: 0.6rem 1.1rem;
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  color: var(--texto-principal);
+  background: var(--color-blanco);
+  border: var(--borde-tinta);
+  border-radius: var(--radio-recto);
+  transition: border-color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.carta-busqueda::placeholder {
+  color: var(--texto-secundario);
+}
+
+.carta-busqueda:focus {
+  outline: none;
+  border-color: var(--color-ambar);
+  box-shadow: 0 0 0 3px rgba(184, 118, 58, 0.25);
+}
+
+.carta-resultado {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--texto-secundario);
+  margin-bottom: var(--espacio-2);
+}
+
+.carta-vacio {
+  padding: var(--espacio-4) 1rem;
+  text-align: center;
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.5rem;
+  color: var(--texto-secundario);
+}
+
+/* ---- Rejilla de productos ---- */
+.carta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 1.4rem;
+}
+
+/* Entrada escalonada de las tarjetas al filtrar o buscar */
+@media (prefers-reduced-motion: no-preference) {
+  .producto {
+    animation: producto-entrar 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(var(--indice, 0) * 45ms);
+  }
+}
+
+@keyframes producto-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Tarjeta completa como botón: foto, insignias y texto */
+.producto-tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  text-align: left;
+  background: var(--color-blanco);
+  border: var(--borde-tinta);
+  border-radius: var(--radio-tarjeta);
+  overflow: hidden;
+  transition: transform var(--transicion-media), box-shadow var(--transicion-media), border-color var(--transicion-media);
+}
+
+.producto-tarjeta:hover,
+.producto-tarjeta:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--color-oliva);
+  box-shadow: 0 18px 36px -18px rgba(62, 42, 29, 0.4);
+}
+
+.producto-tarjeta:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* Zona de imagen con brillo de carga (skeleton) detrás */
+.producto-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(100deg, var(--color-crema-suave) 40%, var(--color-crema) 50%, var(--color-crema-suave) 60%);
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .producto-media {
+    animation: media-brillo 1.4s linear infinite;
+  }
+}
+
+@keyframes media-brillo {
+  to { background-position: -200% 0; }
+}
+
+.producto-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.producto-media img.lista {
+  opacity: 1;
+}
+
+.producto-tarjeta:hover .producto-media img {
+  transform: scale(1.06);
+}
+
+/* Pizarrón: marcador de posición para productos sin foto todavía.
+   Se sustituye agregando rutas al arreglo `imagenes` del producto. */
+.producto-pizarron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  background: var(--color-oliva-profundo);
+  animation: none;
+}
+
+.pizarron-inicial {
+  font-family: var(--fuente-condensada);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--color-oliva-claro);
+}
+
+.pizarron-nota {
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.1rem;
+  color: var(--color-crema-suave);
+  transform: rotate(-2deg);
+}
+
+/* Insignias de merchandising (Nuevo, Recomendado, Favorito) */
+.producto-insignias {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.producto-insignia {
+  font-family: var(--fuente-condensada);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.65rem;
+  background: var(--color-terracota);
+  color: var(--color-tinta);
+  border-radius: var(--radio-recto);
+}
+
+.producto-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem 1.1rem;
+  flex-grow: 1;
+}
+
+.producto-nombre {
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--texto-principal);
+}
+
+.producto-descripcion {
+  font-size: 0.88rem;
+  color: var(--texto-secundario);
+  flex-grow: 1;
+}
+
+.producto-pie {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.producto-precio {
+  font-family: var(--fuente-condensada);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
   color: var(--color-ambar-texto);
 }
 
-.carta-pestana.active {
-  background: transparent;
+.producto-precio small {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--texto-secundario);
+}
+
+.producto-categoria {
+  font-family: var(--fuente-condensada);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--texto-secundario);
+}
+
+/* ---- Ficha de producto (dialog) ---- */
+.ficha {
+  width: min(56rem, calc(100vw - 2rem));
+  padding: 0;
+  border: var(--borde-tinta);
+  border-radius: var(--radio-tarjeta);
+  background: var(--color-crema);
   color: var(--texto-principal);
-  border-bottom-color: var(--color-terracota);
+  box-shadow: 0 40px 90px -30px rgba(30, 27, 23, 0.6);
 }
 
-.carta-lista li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.8rem;
-  padding-block: 0.85rem;
+.ficha::backdrop {
+  background: rgba(30, 27, 23, 0.55);
+  backdrop-filter: blur(6px);
 }
 
-.carta-lista li + li {
-  border-top: 1px solid rgba(30, 27, 23, 0.12);
+@media (prefers-reduced-motion: no-preference) {
+  .ficha[open] {
+    animation: ficha-abrir 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .ficha.cerrando {
+    animation: ficha-cerrar 0.22s ease-in forwards;
+  }
 }
 
-.carta-lista .platillo {
-  font-family: var(--fuente-display);
-  font-weight: 600;
-  font-size: 1.12rem;
-  white-space: nowrap;
+@keyframes ficha-abrir {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
 }
 
-/* Línea punteada entre platillo y descripción, estilo carta impresa */
-.carta-lista .platillo::after {
-  content: '';
-  display: inline-block;
-  width: 2.5rem;
-  border-bottom: 1px dotted rgba(30, 27, 23, 0.35);
-  margin-left: 0.8rem;
-  vertical-align: 0.22em;
+@keyframes ficha-cerrar {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
 }
 
-.carta-lista .descripcion {
-  color: var(--texto-secundario);
-  font-size: 0.94rem;
+.ficha-cerrar {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.9rem;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  font-size: 1.9rem;
+  line-height: 1;
+  background: rgba(245, 239, 228, 0.85);
+  border: var(--borde-tinta);
+  border-radius: 50%;
+  color: var(--texto-principal);
+  transition: background var(--transicion-rapida), transform var(--transicion-rapida);
 }
 
-.carta-nota {
-  margin-top: var(--espacio-3);
-  padding: 1rem 1.3rem;
-  background: var(--color-crema-suave);
-  border-left: 3px solid var(--color-oliva);
-  border-radius: 0 var(--radio-suave) var(--radio-suave) 0;
-  font-size: 0.92rem;
-  color: var(--texto-secundario);
+.ficha-cerrar:hover {
+  background: var(--color-terracota);
+  transform: rotate(90deg);
 }
 
-.carta-foto {
+.ficha-cuerpo {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.ficha-principal {
+  position: relative;
   margin: 0;
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  background: var(--color-crema-suave);
 }
 
-.carta-foto img {
+.ficha-imagen {
   width: 100%;
-  aspect-ratio: 4 / 4.6;
+  height: 100%;
   object-fit: cover;
-  border-radius: 999px 999px var(--radio-tarjeta) var(--radio-tarjeta);
-  box-shadow: var(--sombra-tarjeta);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ficha-imagen.lista {
+  opacity: 1;
+}
+
+/* Zoom suave al pasar el cursor por la foto grande */
+.ficha-principal:hover .ficha-imagen {
+  transform: scale(1.07);
+}
+
+.ficha-pizarron {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  background: var(--color-oliva-profundo);
+}
+
+.ficha-pizarron-inicial {
+  font-family: var(--fuente-condensada);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--color-oliva-claro);
+}
+
+.ficha-pizarron-nota {
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.3rem;
+  color: var(--color-crema-suave);
+  transform: rotate(-2deg);
+}
+
+.ficha-miniaturas {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+.ficha-miniaturas:empty {
+  display: none;
+}
+
+.ficha-miniatura {
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radio-suave);
+  overflow: hidden;
+  background: none;
+  transition: border-color var(--transicion-rapida), transform var(--transicion-rapida);
+}
+
+.ficha-miniatura:hover {
+  transform: translateY(-2px);
+}
+
+.ficha-miniatura.activa {
+  border-color: var(--color-terracota);
+}
+
+.ficha-miniatura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ficha-info {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.4rem, 1rem + 2vw, 2.4rem);
+}
+
+.ficha-categoria {
+  font-family: var(--fuente-condensada);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--color-ambar-texto);
+  margin-bottom: 0.4rem;
+}
+
+.ficha-nombre {
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  margin-bottom: 0.6rem;
+}
+
+.ficha-descripcion {
+  color: var(--texto-secundario);
+  margin-bottom: 0.8rem;
+}
+
+.ficha-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.ficha-etiquetas:empty {
+  display: none;
+}
+
+.ficha-precio {
+  font-family: var(--fuente-condensada);
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ambar-texto);
+  margin-block: auto 1.2rem;
+}
+
+.ficha-precio small {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--texto-secundario);
+}
+
+.ficha-navegacion {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.ficha-flecha {
+  font-family: var(--fuente-condensada);
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 1.5px solid var(--color-oliva);
+  border-radius: var(--radio-recto);
+  color: var(--color-oliva-oscuro);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.ficha-flecha:hover:not(:disabled) {
+  background: var(--color-oliva);
+  color: var(--color-crema);
+}
+
+.ficha-flecha:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Ficha en columna sobre pantallas chicas */
+@media (max-width: 767.98px) {
+  .ficha-cuerpo {
+    grid-template-columns: 1fr;
+  }
+
+  .ficha-principal {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 /* ---- Origen / Expendio ---- */
@@ -186,25 +629,38 @@
   margin: var(--espacio-3) 0 0;
 }
 
-.origen-foto img {
+.origen-foto picture {
+  display: block;
+  overflow: hidden;
   border-radius: var(--radio-tarjeta);
   box-shadow: var(--sombra-tarjeta);
-  width: 100%;
 }
 
-/* Fichas de expendio planas: sin sombra ni elevación,
-   solo el borde se enciende al pasar el cursor */
+.origen-foto img {
+  border-radius: var(--radio-tarjeta);
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.origen-foto:hover img {
+  transform: scale(1.04);
+}
+
+/* Fichas de expendio: al pasar el cursor se levantan apenas
+   con una sombra cálida, como tomar la bolsa de la repisa */
 .tarjeta-origen {
   height: 100%;
   background: var(--color-blanco);
   border: var(--borde-tinta);
   border-radius: var(--radio-recto);
   padding: 1.6rem 1.5rem 1.3rem;
-  transition: border-color var(--transicion-media);
+  transition: border-color var(--transicion-media), transform var(--transicion-media), box-shadow var(--transicion-media);
 }
 
 .tarjeta-origen:hover {
   border-color: var(--color-oliva);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -16px rgba(62, 42, 29, 0.35);
 }
 
 .origen-region {
@@ -272,55 +728,63 @@
   color: var(--color-oliva-claro);
 }
 
-/* Renglones de pizarrón: nombre a mano, detalle al centro
-   y tiempo a la derecha, como la carta escrita de la barra */
+/* Tarjetas de pizarrón: nombre a mano, detalle en una línea
+   y el tiempo como gis terracota. Al pasar el cursor la tarjeta
+   se levanta y enciende su borde, como señalar en el pizarrón */
 .pizarron-lista {
-  max-width: 54rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.2rem;
+  max-width: 62rem;
   margin: var(--espacio-4) auto 0;
 }
 
 .metodo {
-  display: grid;
-  grid-template-columns: 9rem 1fr auto;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding-block: 1.4rem;
-  border-bottom: 1px solid rgba(245, 239, 228, 0.25);
-  transition: border-color var(--transicion-media);
-}
-
-.metodo:first-child {
-  border-top: 1px solid rgba(245, 239, 228, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.6rem 1.4rem 1.4rem;
+  border: 1px solid rgba(245, 239, 228, 0.25);
+  border-radius: var(--radio-tarjeta);
+  transition: transform var(--transicion-media), border-color var(--transicion-media), background var(--transicion-media);
 }
 
 .metodo:hover {
-  border-bottom-color: var(--color-terracota);
+  transform: translateY(-5px);
+  border-color: var(--color-terracota);
+  background: rgba(30, 27, 23, 0.18);
 }
 
 .metodo-nombre {
   font-family: var(--fuente-manuscrita);
-  font-size: 1.9rem;
+  font-size: 2rem;
   line-height: 1.1;
   color: var(--color-blanco);
+  transform: rotate(-1.5deg);
+  transform-origin: left;
 }
 
 .metodo-detalle {
   font-size: 0.95rem;
   color: var(--color-crema-suave);
+  flex-grow: 1;
 }
 
 .metodo-tiempo {
+  align-self: flex-start;
   font-family: var(--fuente-condensada);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--color-terracota-clara);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(246, 211, 191, 0.4);
+  border-radius: var(--radio-recto);
   white-space: nowrap;
 }
 
-@media (max-width: 767.98px) {
-  .metodo {
-    grid-template-columns: 1fr;
-    gap: 0.3rem;
+@media (prefers-reduced-motion: reduce) {
+  .metodo:hover {
+    transform: none;
   }
 }

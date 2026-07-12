@@ -20,6 +20,9 @@
   <!-- Favicon -->
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
 
+  <!-- Marca que hay JavaScript disponible: activa los revelados al hacer scroll -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <!-- Hojas de estilo -->
   <link rel="preload" href="fonts/bebasneue-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -110,6 +113,28 @@
       </div>
     </section>
 
+    <!-- ================= CINTA ================= -->
+    <div class="cinta" aria-label="Café poblano, brew bar, expendio, brunch, Huitzilán de Serdán, Totutla">
+      <div class="cinta-pista" aria-hidden="true">
+        <span class="cinta-grupo">
+          <span>Café poblano</span><span class="cinta-guion"></span>
+          <span>Brew bar</span><span class="cinta-guion"></span>
+          <span>Expendio</span><span class="cinta-guion"></span>
+          <span>Brunch</span><span class="cinta-guion"></span>
+          <span>Huitzilán de Serdán</span><span class="cinta-guion"></span>
+          <span>Totutla</span><span class="cinta-guion"></span>
+        </span>
+        <span class="cinta-grupo">
+          <span>Café poblano</span><span class="cinta-guion"></span>
+          <span>Brew bar</span><span class="cinta-guion"></span>
+          <span>Expendio</span><span class="cinta-guion"></span>
+          <span>Brunch</span><span class="cinta-guion"></span>
+          <span>Huitzilán de Serdán</span><span class="cinta-guion"></span>
+          <span>Totutla</span><span class="cinta-guion"></span>
+        </span>
+      </div>
+    </div>
+
     <!-- ================= HISTORIA ================= -->
     <section id="historia" class="seccion historia">
       <div class="container">
@@ -119,18 +144,12 @@
             <h2 class="titulo-seccion revelar">Una promesa que se volvió punto de encuentro</h2>
             <div class="revelar">
               <p>
-                La Cuatro nace en la Avenida 4 Oriente, en una casa colonial del Centro
-                Histórico de Puebla que esperó en silencio hasta encontrar su propósito:
-                un espacio de charla, café y asombro.
-              </p>
-              <p>
-                El nombre viene de una tradición familiar: <em>«nos vemos en la Cuatro»</em>,
-                la promesa de construir un lugar donde el café reúna a la gente,
-                como lo hacía la casa del abuelo.
+                El nombre viene de una promesa familiar: <em>«nos vemos en la Cuatro»</em>.
+                Hoy esa promesa es una casa colonial en la Avenida 4 Oriente donde el
+                café reúne a la gente, como lo hacía la casa del abuelo.
               </p>
               <p class="texto-secundario">
-                Desde 2023, cada taza es un homenaje al café del estado de Puebla y a
-                quienes lo cultivan.
+                Desde 2023, cada taza es un homenaje al café poblano y a quienes lo cultivan.
               </p>
             </div>
             <blockquote class="historia-cita revelar">
@@ -157,20 +176,20 @@
           </div>
         </div>
 
-        <ul class="historia-datos revelar">
-          <li>
+        <ul class="historia-datos">
+          <li class="revelar">
             <span class="dato-numero">2023</span>
             <span class="dato-texto">Abrimos la barra en el Centro Histórico</span>
           </li>
-          <li>
+          <li class="revelar">
             <span class="dato-numero">Top 50</span>
             <span class="dato-texto">The Best Coffee Shops México 2025</span>
           </li>
-          <li>
+          <li class="revelar">
             <span class="dato-numero">’25</span>
             <span class="dato-texto">Premio de diseño interior LMDC</span>
           </li>
-          <li>
+          <li class="revelar">
             <span class="dato-numero">100%</span>
             <span class="dato-texto">Granos de productores poblanos</span>
           </li>
@@ -191,9 +210,8 @@
             <article class="pilar revelar">
               <h3 class="pilar-titulo">Origen con nombre</h3>
               <p>
-                Trabajamos microlotes de Huitzilán de Serdán y Totutla, con el nombre
-                del productor en cada bolsa. El café no es anónimo: tiene tierra,
-                proceso y apellido.
+                Microlotes de Huitzilán y Totutla con el nombre del productor
+                en cada bolsa.
               </p>
             </article>
           </div>
@@ -201,9 +219,8 @@
             <article class="pilar revelar">
               <h3 class="pilar-titulo">Un ambiente atemporal</h3>
               <p>
-                Una casa colonial con maderas nobles, cerámica verde oliva y luz
-                natural. Un refugio cálido para la charla, el trabajo o el silencio
-                con espuma de leche.
+                Una casa colonial de maderas nobles y cerámica oliva, refugio
+                para la charla o el trabajo.
               </p>
             </article>
           </div>
@@ -211,8 +228,8 @@
             <article class="pilar revelar">
               <h3 class="pilar-titulo">Comunidad primero</h3>
               <p>
-                Panaderos, floristas, baristas invitados y música curada. La Cuatro
-                se construye en colectivo, con los proyectos locales que admiramos.
+                Panaderos, floristas y baristas invitados: La Cuatro se
+                construye en colectivo.
               </p>
             </article>
           </div>
@@ -295,9 +312,8 @@
               <p class="temporada-firma">Jamaica <span>+</span> Cold Brew</p>
               <h3 class="temporada-subtitulo">Jamaica Brew</h3>
               <p>
-                Una bebida refrescante para tardes de calor: la acidez floral de la
-                jamaica encuentra el cuerpo dulce de nuestro cold brew de origen
-                poblano. Café en calma y una visita a La Cuatro.
+                La acidez floral de la jamaica sobre el cuerpo dulce de nuestro
+                cold brew poblano. Para tardes de calor.
               </p>
               <a class="boton-secundario boton-sobre-oscuro" href="#menu">Ver el menú</a>
             </div>
@@ -313,142 +329,65 @@
           <div class="col-lg-8">
             <h2 class="titulo-seccion revelar">Menú de la barra</h2>
             <p class="texto-secundario revelar">
-              Espresso, brew bar y repostería de autor. Precios disponibles en barra.
+              Explora por categoría o busca tu antojo. Los precios son de
+              demostración: los definitivos se confirman en barra.
             </p>
           </div>
         </div>
 
-        <div class="revelar">
-          <ul class="nav carta-pestanas justify-content-center" id="pestanasMenu" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="carta-pestana active" id="tab-espresso" data-bs-toggle="tab"
-                      data-bs-target="#panel-espresso" type="button" role="tab"
-                      aria-controls="panel-espresso" aria-selected="true">Espresso</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="carta-pestana" id="tab-filtrados" data-bs-toggle="tab"
-                      data-bs-target="#panel-filtrados" type="button" role="tab"
-                      aria-controls="panel-filtrados" aria-selected="false">Brew bar</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="carta-pestana" id="tab-temporada" data-bs-toggle="tab"
-                      data-bs-target="#panel-temporada" type="button" role="tab"
-                      aria-controls="panel-temporada" aria-selected="false">Temporada</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="carta-pestana" id="tab-reposteria" data-bs-toggle="tab"
-                      data-bs-target="#panel-reposteria" type="button" role="tab"
-                      aria-controls="panel-reposteria" aria-selected="false">Repostería</button>
-            </li>
-          </ul>
+        <!-- Controles del catálogo: chips de categoría + buscador -->
+        <div class="carta-controles revelar">
+          <div class="carta-chips" role="group" aria-label="Filtrar el menú por categoría">
+            <button class="carta-chip activo" type="button" data-categoria="todo" aria-pressed="true">Todo</button>
+            <button class="carta-chip" type="button" data-categoria="espresso" aria-pressed="false">Espresso</button>
+            <button class="carta-chip" type="button" data-categoria="brew-bar" aria-pressed="false">Brew bar</button>
+            <button class="carta-chip" type="button" data-categoria="temporada" aria-pressed="false">Temporada</button>
+            <button class="carta-chip" type="button" data-categoria="reposteria" aria-pressed="false">Repostería</button>
+          </div>
+          <div class="carta-buscador">
+            <label class="visually-hidden" for="buscadorMenu">Buscar en el menú</label>
+            <input class="carta-busqueda" id="buscadorMenu" type="search"
+                   placeholder="Buscar bebida o postre" autocomplete="off">
+          </div>
+        </div>
 
-          <div class="tab-content carta-contenido">
-            <div class="tab-pane fade show active" id="panel-espresso" role="tabpanel" aria-labelledby="tab-espresso" tabindex="0">
-              <div class="row g-4 align-items-center">
-                <div class="col-lg-7">
-                  <ul class="carta-lista">
-                    <li><span class="platillo">Espresso</span><span class="descripcion">Doble, de microlote poblano</span></li>
-                    <li><span class="platillo">Americano</span><span class="descripcion">Caliente o con hielo</span></li>
-                    <li><span class="platillo">Latte</span><span class="descripcion">Caliente o frío, con arte en leche</span></li>
-                    <li><span class="platillo">Cappuccino</span><span class="descripcion">Espuma sedosa, taza de talavera</span></li>
-                    <li><span class="platillo">Iced Mocha</span><span class="descripcion">Espresso, cacao y leche fría</span></li>
-                    <li><span class="platillo">Shaken Affogato</span><span class="descripcion">Espresso agitado con helado</span></li>
-                    <li><span class="platillo">Tónico con Yuzu</span><span class="descripcion">Espresso, agua tónica y cítrico japonés</span></li>
-                    <li><span class="platillo">Chocolate caliente</span><span class="descripcion">Cacao de casa</span></li>
-                  </ul>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                  <figure class="carta-foto">
-                    <picture>
-                      <source srcset="img/menu/espresso-talavera.webp" type="image/webp">
-                      <img src="img/menu/espresso-talavera.jpg" alt="Manos sosteniendo un espresso servido en taza de talavera poblana" loading="lazy">
-                    </picture>
-                  </figure>
-                </div>
-              </div>
-            </div>
+        <p class="carta-resultado revelar" aria-live="polite"></p>
 
-            <div class="tab-pane fade" id="panel-filtrados" role="tabpanel" aria-labelledby="tab-filtrados" tabindex="0">
-              <div class="row g-4 align-items-center">
-                <div class="col-lg-7">
-                  <ul class="carta-lista">
-                    <li><span class="platillo">V60</span><span class="descripcion">Filtrado limpio y brillante, elige tu origen</span></li>
-                    <li><span class="platillo">Chemex</span><span class="descripcion">Para compartir, taza suave y sedosa</span></li>
-                    <li><span class="platillo">Kalita 102</span><span class="descripcion">Extracción pareja, dulzor redondo</span></li>
-                    <li><span class="platillo">Cold Brew</span><span class="descripcion">12 horas de extracción en frío</span></li>
-                  </ul>
-                  <p class="carta-nota">
-                    Todos los filtrados se preparan con microlotes de Huitzilán de Serdán
-                    y Totutla. Pregunta en barra por el origen del día.
-                  </p>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                  <figure class="carta-foto">
-                    <picture>
-                      <source srcset="img/interior/brew-bar.webp" type="image/webp">
-                      <img src="img/interior/brew-bar.jpg" alt="Brew bar de La Cuatro con molinos, básculas y pizarrón de orígenes" loading="lazy">
-                    </picture>
-                  </figure>
-                </div>
-              </div>
-            </div>
+        <!-- El catálogo se pinta desde js/menu-productos.js -->
+        <ul class="carta-grid" id="cartaGrid"></ul>
 
-            <div class="tab-pane fade" id="panel-temporada" role="tabpanel" aria-labelledby="tab-temporada" tabindex="0">
-              <div class="row g-4 align-items-center">
-                <div class="col-lg-7">
-                  <ul class="carta-lista">
-                    <li><span class="platillo">Brown Shaken Espresso</span><span class="descripcion">Espresso agitado, azúcar morena</span></li>
-                    <li><span class="platillo">Matcha con foam de mango</span><span class="descripcion">Fruta fresca de temporada</span></li>
-                    <li><span class="platillo">Strawberry Matcha</span><span class="descripcion">El clásico de la casa</span></li>
-                    <li><span class="platillo">Flotante de Limón</span><span class="descripcion">Con cold brew</span></li>
-                    <li><span class="platillo">Jamaica Brew</span><span class="descripcion">Jamaica + cold brew</span></li>
-                    <li><span class="platillo">Chocoreta Latte</span><span class="descripcion">Invierno: chocolate y menta</span></li>
-                    <li><span class="platillo">Olla Latte</span><span class="descripcion">Invierno: espresso con café de olla</span></li>
-                    <li><span class="platillo">Toffee Nut Latte</span><span class="descripcion">Invierno: caramelo y nuez</span></li>
-                  </ul>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                  <figure class="carta-foto">
-                    <picture>
-                      <source srcset="img/menu/latte-temporada-navidad.webp" type="image/webp">
-                      <img src="img/menu/latte-temporada-navidad.jpg" alt="Barista vertiendo espresso sobre un latte de temporada verde" loading="lazy">
-                    </picture>
-                  </figure>
-                </div>
-              </div>
-            </div>
+        <p class="carta-vacio" hidden>
+          No encontramos nada con esa búsqueda. Prueba con otra palabra o cambia de categoría.
+        </p>
+      </div>
 
-            <div class="tab-pane fade" id="panel-reposteria" role="tabpanel" aria-labelledby="tab-reposteria" tabindex="0">
-              <div class="row g-4 align-items-center">
-                <div class="col-lg-7">
-                  <ul class="carta-lista">
-                    <li><span class="platillo">Pain suisse de pistache</span><span class="descripcion">Brûlée Baked Goods</span></li>
-                    <li><span class="platillo">Croissant de curd de limón</span><span class="descripcion">Con chocolate blanco</span></li>
-                    <li><span class="platillo">Croissant de caramelo</span><span class="descripcion">Con chocolate</span></li>
-                    <li><span class="platillo">Estrella de maracuyá</span><span class="descripcion">Hojaldre de temporada</span></li>
-                    <li><span class="platillo">Chocolatín</span><span class="descripcion">El infaltable</span></li>
-                    <li><span class="platillo">Strudel de manzana</span><span class="descripcion">Especiado, para compartir</span></li>
-                    <li><span class="platillo">Panqué de limón</span><span class="descripcion">De la vitrina de casa</span></li>
-                    <li><span class="platillo">Rol de canela y nuez</span><span class="descripcion">También de arándano con crema</span></li>
-                  </ul>
-                  <p class="carta-nota">
-                    Repostería de autor en colaboración con panaderías locales como
-                    Brûlée Baked Goods. La vitrina cambia durante la semana.
-                  </p>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                  <figure class="carta-foto">
-                    <picture>
-                      <source srcset="img/menu/reposteria-brulee.webp" type="image/webp">
-                      <img src="img/menu/reposteria-brulee.jpg" alt="Bandeja de croissants y repostería frente al espejo de La Cuatro" loading="lazy">
-                    </picture>
-                  </figure>
-                </div>
-              </div>
+      <!-- Ficha de producto: galería, detalle y navegación -->
+      <dialog class="ficha" id="fichaProducto" aria-labelledby="fichaNombre">
+        <button class="ficha-cerrar" type="button" aria-label="Cerrar ficha del producto">&times;</button>
+        <div class="ficha-cuerpo">
+          <div class="ficha-galeria">
+            <figure class="ficha-principal">
+              <img class="ficha-imagen" src="" alt="">
+              <span class="ficha-pizarron" hidden>
+                <span class="ficha-pizarron-inicial" aria-hidden="true"></span>
+                <span class="ficha-pizarron-nota">foto en camino</span>
+              </span>
+            </figure>
+            <div class="ficha-miniaturas" role="group" aria-label="Más fotos del producto"></div>
+          </div>
+          <div class="ficha-info">
+            <p class="ficha-categoria"></p>
+            <h3 class="ficha-nombre" id="fichaNombre"></h3>
+            <p class="ficha-descripcion"></p>
+            <p class="ficha-etiquetas"></p>
+            <p class="ficha-precio"><span class="ficha-precio-monto"></span> <small>precio de demostración</small></p>
+            <div class="ficha-navegacion">
+              <button class="ficha-flecha ficha-anterior" type="button">&lsaquo; Anterior</button>
+              <button class="ficha-flecha ficha-siguiente" type="button">Siguiente &rsaquo;</button>
             </div>
           </div>
         </div>
-      </div>
+      </dialog>
     </section>
 
     <!-- ================= ORIGEN / EXPENDIO ================= -->
@@ -459,8 +398,8 @@
             <span class="etiqueta-seccion revelar">Expendio</span>
             <h2 class="titulo-seccion revelar">Café de origen único, para llevar a casa</h2>
             <p class="revelar">
-              En nuestra barra también funciona un expendio: microlotes del estado de
-              Puebla tostados para filtrados y espresso, en presentaciones de ¼ kg a 1 kg.
+              Microlotes poblanos tostados para filtrados y espresso,
+              listos para llevar a casa.
             </p>
             <figure class="origen-foto revelar">
               <picture>
@@ -531,30 +470,30 @@
           <div class="col-lg-8">
             <h2 class="titulo-seccion revelar">Elige tu método en el brew bar</h2>
             <p class="metodos-intro revelar">
-              Como en nuestro pizarrón de barra: cada método revela algo distinto
-              del mismo grano. Los baristas te acompañan para encontrar tu taza.
+              Cada método revela algo distinto del mismo grano.
+              Los baristas te acompañan a encontrar tu taza.
             </p>
           </div>
         </div>
-        <ul class="pizarron-lista revelar">
-          <li class="metodo">
+        <ul class="pizarron-lista">
+          <li class="metodo revelar">
             <span class="metodo-nombre">Espresso</span>
-            <span class="metodo-detalle">Intensidad y crema. La base de la barra, en máquina de dos grupos.</span>
+            <span class="metodo-detalle">Intensidad y crema, la base de la barra.</span>
             <span class="metodo-tiempo">≈ 28 segundos</span>
           </li>
-          <li class="metodo">
+          <li class="metodo revelar">
             <span class="metodo-nombre">V60</span>
-            <span class="metodo-detalle">Vertido en espiral, taza limpia y brillante que resalta la acidez.</span>
+            <span class="metodo-detalle">Taza limpia y brillante que resalta la acidez.</span>
             <span class="metodo-tiempo">≈ 3 minutos</span>
           </li>
-          <li class="metodo">
+          <li class="metodo revelar">
             <span class="metodo-nombre">Chemex</span>
-            <span class="metodo-detalle">Filtro grueso y cuerpo sedoso. Ideal para compartir el origen del día.</span>
+            <span class="metodo-detalle">Cuerpo sedoso, ideal para compartir.</span>
             <span class="metodo-tiempo">≈ 4 minutos</span>
           </li>
-          <li class="metodo">
+          <li class="metodo revelar">
             <span class="metodo-nombre">Cold Brew</span>
-            <span class="metodo-detalle">Extracción lenta en frío: dulzor, cuerpo y cero prisa.</span>
+            <span class="metodo-detalle">Extracción en frío: dulzor y cero prisa.</span>
             <span class="metodo-tiempo">12 horas</span>
           </li>
         </ul>
@@ -682,12 +621,11 @@
           <div class="col-lg-6">
             <h2 class="titulo-seccion revelar">La barra también se celebra</h2>
             <p class="revelar">
-              Cada año, el aniversario de La Cuatro se convierte en un día completo de
-              café, comida, baristas invitados y música hasta la noche: nuestra
-              <strong>Coffee House Party</strong> con takeovers en barra y filtrados.
+              Cada aniversario es un día completo de café, baristas invitados y música:
+              nuestra <strong>Coffee House Party</strong>.
             </p>
             <p class="texto-secundario revelar">
-              Celebramos en colectivo, junto a los proyectos locales que hacen posible este camino:
+              Celebramos junto a los proyectos locales que hacen posible este camino:
             </p>
             <ul class="lista-colaboradores revelar">
               <li>Brûlée Baked Goods <span>panadería</span></li>
@@ -750,7 +688,7 @@
             <div class="playlists revelar">
               <p class="playlists-titulo">La casa también suena</p>
               <p class="texto-secundario">
-                Nuestra música está curada en Spotify. Llévate el ambiente de la barra a donde vayas:
+                Llévate el ambiente de la barra a donde vayas:
               </p>
               <div class="playlists-enlaces">
                 <a href="https://open.spotify.com/playlist/5N0daoLiECnf4yEXac2ada" target="_blank" rel="noopener" aria-label="Escuchar la playlist Vibin en La Cuatro en Spotify">
@@ -1036,6 +974,7 @@
   <script src="js/carrusel.js" defer></script>
   <script src="js/gallery.js" defer></script>
   <script src="js/forms.js" defer></script>
+  <script src="js/menu-productos.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/datos-estructurados.js" defer></script>
 </body>
