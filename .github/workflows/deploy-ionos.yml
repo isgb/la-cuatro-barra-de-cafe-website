@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to IONOS VPS
+      - name: Deploy La Cuatro to IONOS VPS
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
@@ -20,5 +20,4 @@ jobs:
 
           script: |
             cd /var/www/lacuatrobarracafe
-
             git pull origin main
