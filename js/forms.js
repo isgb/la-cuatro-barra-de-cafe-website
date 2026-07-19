@@ -64,10 +64,26 @@
       return;
     }
 
-    // Punto de conexión para un servicio de envío (Formspree, EmailJS, backend propio).
-    // Por ahora confirmamos al usuario y limpiamos el formulario.
-    estadoEnvio.textContent = '¡Gracias! Tu mensaje está listo. Te responderemos a la brevedad.';
-    formulario.reset();
+    estadoEnvio.textContent = 'Enviando tu mensaje...';
+
+    fetch('/php/enviar-contacto.php', {
+      method: 'POST',
+      body: new FormData(formulario)
+    })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      if (data.success) {
+        estadoEnvio.textContent = '¡Gracias! Tu mensaje se envió correctamente. Te responderemos a la brevedad.';
+        formulario.reset();
+      } else {
+        estadoEnvio.textContent = 'Error: ' + (data.error || 'No se pudo enviar el mensaje.');
+      }
+    })
+    .catch(function (error) {
+      estadoEnvio.textContent = 'Error de conexión. Intenta nuevamente más tarde.';
+    });
 
     setTimeout(function () {
       estadoEnvio.textContent = '';
